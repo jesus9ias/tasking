@@ -1,0 +1,22 @@
+{
+  "name": "tasking",
+  "version": "1.0.0",
+  "description": "Task manager for the day by day",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesus9ias/tasking.git"
+  },
+  "author": "Jesus Escamilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jesus9ias/tasking/issues"
+  },
+  "homepage": "https://github.com/jesus9ias/tasking#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
