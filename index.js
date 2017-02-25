@@ -1,15 +1,14 @@
 var path = require('path');
 var express = require('express');
 var http = require('http');
+var routes = require('./src/routes.js');
 
 var app = express();
 var server = http.Server(app);
 
 app.use(express.static(path.resolve(__dirname, 'dist/public')));
 
-app.get('/', function(req, res) {
-  res.json({'result': 'ok'});
-});
+routes(app);
 
 server.listen('3333', function(err) {
   if (err) {

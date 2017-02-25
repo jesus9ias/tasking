@@ -4,7 +4,7 @@
   "description": "Task manager for the day by day",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "dev": "node index.js"
   },
   "repository": {
     "type": "git",
