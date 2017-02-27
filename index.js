@@ -1,14 +1,20 @@
-var path = require('path');
 var express = require('express');
+var path = require('path');
 var http = require('http');
 var routes = require('./src/routes.js');
+var db = require('./src/db.js');
 
 var app = express();
 var server = http.Server(app);
 
 app.use(express.static(path.resolve(__dirname, 'dist/public')));
 
-routes(app);
+var tasking = {
+  app: app,
+  db: db.instance
+}
+
+routes(tasking);
 
 server.listen('3333', function(err) {
   if (err) {

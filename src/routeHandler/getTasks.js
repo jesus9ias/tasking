@@ -1,4 +1,6 @@
 
-module.exports = function(req, res) {
-  res.json({'result': 'tasks'});
+module.exports = function(req, res, db) {
+  db.models.users.findAll().then(function(users) {
+    res.json({'result': users});
+  });
 }
