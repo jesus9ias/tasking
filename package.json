@@ -4,7 +4,10 @@
   "description": "Task manager for the day by day",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "sqlinit": "sequelize init --config src/config/dbConfig.json",
+    "migration": "sequelize migration:create",
+    "migrate": "sequelize db:migrate --config src/config/dbConfig.json"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
     "express": "^4.14.1",
     "jsonfile": "^2.4.0",
     "mysql": "^2.13.0",
-    "sequelize": "^3.30.2"
+    "sequelize": "^3.30.2",
+    "sequelize-cli": "^2.5.1"
   }
 }
