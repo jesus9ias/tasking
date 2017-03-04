@@ -1,5 +1,7 @@
 var Users = require('./users');
+var Tasks = require('./tasks');
 
 module.exports = function(db) {
-  Users: Users(db)
+  Users(db);
+  Tasks(db);
 }

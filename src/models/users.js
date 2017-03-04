@@ -12,7 +12,5 @@ module.exports = function(db) {
     status: {
       type: Sequelize.INTEGER
     }
-  }, {
-    timestamps: false
-  });
+  }, {});
 };

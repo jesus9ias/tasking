@@ -10,14 +10,6 @@ module.exports = {
           primaryKey: true,
           autoIncrement: true
         },
-        createdAt: {
-          type: Sequelize.DATE,
-          allowNull: false
-        },
-        updatedAt: {
-          type: Sequelize.DATE,
-          allowNull: true
-        },
         name: {
           type: Sequelize.STRING(100),
           allowNull: false
@@ -30,10 +22,18 @@ module.exports = {
           type: Sequelize.STRING(100),
           allowNull: false
         },
+        createdAt: {
+          type: Sequelize.DATE,
+          allowNull: false
+        },
+        updatedAt: {
+          type: Sequelize.DATE,
+          allowNull: true
+        },
         status: {
           type: Sequelize.INTEGER(1).UNSIGNED,
           allowNull: false
-        },
+        }
       },
       {
         engine: 'MYISAM'
