@@ -9,6 +9,12 @@ module.exports = function(db) {
     name: {
       type: Sequelize.STRING
     },
+    email: {
+      type: Sequelize.STRING
+    },
+    password: {
+      type: Sequelize.STRING
+    },
     status: {
       type: Sequelize.INTEGER
     }

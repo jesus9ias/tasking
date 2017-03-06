@@ -4,6 +4,7 @@ var ENV = process.env.NODE_ENV || 'development';
 
 var config = {
   "development": {
+    "SECRET": "wowow",
     "DB": {
       "username": "root",
       "password": "",

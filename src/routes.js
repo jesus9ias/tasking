@@ -1,4 +1,5 @@
 var getTasks = require('./routeHandler/getTasks.js');
+var doLogin = require('./routeHandler/doLogin.js');
 
 function routes(tasking) {
   tasking.app.get('/', function(req, res) {
@@ -13,8 +14,14 @@ function routes(tasking) {
     res.json({'result': 'task ' + req.params.id});
   });
 
+  tasking.app.get('/login', function(req, res) {
+    console.log(req.params);
+    doLogin(req, res, tasking.db);
+  });
+
   tasking.app.post('/login', function(req, res) {
-    res.json({'result': 'login'});
+    console.log(req.query);
+    doLogin(req, res, tasking.db);
   });
 }
 
