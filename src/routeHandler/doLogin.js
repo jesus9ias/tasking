@@ -1,9 +1,9 @@
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
+var response = require('../responses');
 var config = require('../config');
 
 module.exports = function(req, res, db) {
-  console.log(req.query);
   db.models.users.findOne({
     where: {
       email: req.query.email
@@ -13,13 +13,21 @@ module.exports = function(req, res, db) {
       bcrypt.compare(req.query.password, user.password, function(err, result) {
         if (result === true) {
           var token = jwt.sign({ id: user.id }, config.SECRET);
-          res.json({ 'token': token });
+          db.models.users.update({
+            token: token
+          },{
+            where: {
+              id: user.id
+            }
+          });
+          console.log(user);
+          res.json(response.OK({ 'token': token }));
         } else {
-          res.json({ 'result': 'incorrect login data' });
+          res.json(response.ERROR({ 'msg': 'incorrect login data' }));
         }
       });
     } else {
-      res.json({'result': 'user not found'});
+      res.json(response.NOT_FOUND({ 'msg': 'user not found' }));
     }
   });
 }

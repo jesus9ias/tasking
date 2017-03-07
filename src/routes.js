@@ -14,11 +14,6 @@ function routes(tasking) {
     res.json({'result': 'task ' + req.params.id});
   });
 
-  tasking.app.get('/login', function(req, res) {
-    console.log(req.params);
-    doLogin(req, res, tasking.db);
-  });
-
   tasking.app.post('/login', function(req, res) {
     console.log(req.query);
     doLogin(req, res, tasking.db);

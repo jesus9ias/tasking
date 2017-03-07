@@ -3,11 +3,14 @@ var path = require('path');
 var http = require('http');
 var routes = require('./src/routes.js');
 var db = require('./src/db.js');
+var auth = require('./src/auth');
 
 var app = express();
 var server = http.Server(app);
 
 app.use(express.static(path.resolve(__dirname, 'dist/public')));
+
+app.use(auth.authRoutes(db.instance));
 
 var tasking = {
   app: app,

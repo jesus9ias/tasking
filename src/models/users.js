@@ -17,6 +17,9 @@ module.exports = function(db) {
     },
     status: {
       type: Sequelize.INTEGER
+    },
+    token: {
+      type: Sequelize.STRING
     }
   }, {});
 };
