@@ -13,14 +13,9 @@ module.exports = function(req, res, db) {
       bcrypt.compare(req.query.password, user.password, function(err, result) {
         if (result === true) {
           var token = jwt.sign({ id: user.id }, config.SECRET);
-          db.models.users.update({
+          user.update({
             token: token
-          },{
-            where: {
-              id: user.id
-            }
           });
-          console.log(user);
           res.json(response.OK({ 'token': token }));
         } else {
           res.json(response.ERROR({ 'msg': 'incorrect login data' }));
