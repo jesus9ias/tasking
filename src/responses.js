@@ -41,11 +41,19 @@ function METHOD_NOT_FOUND(data) {
   };
 }
 
+function DB_NOT_CONNECTED(data) {
+  return {
+    code: 503,
+    data: data
+  };
+}
+
 module.exports = {
   OK,
   ERROR,
   NOT_FOUND,
   NEED_LOGIN,
   NEED_PERMISSION,
-  METHOD_NOT_FOUND
+  METHOD_NOT_FOUND,
+  DB_NOT_CONNECTED
 };

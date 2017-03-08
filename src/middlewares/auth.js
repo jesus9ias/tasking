@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
-var response = require('./responses');
-var config = require('./config');
+var response = require('../responses');
+var config = require('../config');
 
 function authRoutes(db) {
   return function(req, res, next) {
@@ -33,6 +33,19 @@ function authRoutes(db) {
   }
 }
 
+function authDb(db) {
+  return function(req, res, next) {
+    db.authenticate()
+      .then(function(err) {
+        next()
+      })
+      .catch(function (err) {
+        res.json(response.DB_NOT_CONNECTED({ 'msg': 'Connection not established with database' }));
+      });
+  }
+}
+
 module.exports = {
-  authRoutes
+  authRoutes,
+  authDb
 };

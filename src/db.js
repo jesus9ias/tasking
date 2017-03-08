@@ -8,15 +8,6 @@ var sequelize = new Sequelize(config.DB.database, config.DB.username, config.DB.
   pool: config.DB.pool
 });
 
-/*sequelize
-  .authenticate()
-  .then(function(err) {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });*/
-
 models(sequelize);
 
 module.exports = {
