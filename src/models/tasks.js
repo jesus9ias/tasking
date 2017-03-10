@@ -16,6 +16,12 @@ module.exports = function(db) {
     createdAt: {
       type: Sequelize.DATE
     },
+    createdBy: {
+      type: Sequelize.INTEGER
+    },
+    assignedTo: {
+      type: Sequelize.INTEGER
+    },
     updatedAt: {
       type: Sequelize.DATE
     },
@@ -28,11 +34,11 @@ module.exports = function(db) {
     recurrentId: {
       type: Sequelize.INTEGER
     },
-    completedBy: {
-      type: Sequelize.INTEGER
-    },
     completedAt: {
       type: Sequelize.DATE
+    },
+    completedBy: {
+      type: Sequelize.INTEGER
     },
     priority: {
       type: Sequelize.INTEGER

@@ -3,7 +3,7 @@ var getTasks = require('./routeHandler/getTasks.js');
 var getTask = require('./routeHandler/getTask.js');
 var updateTask = require('./routeHandler/updateTask.js');
 var saveTask = require('./routeHandler/saveTask.js');
-var manageTask = require('./routeHandler/manageTask.js');
+var myProfile = require('./routeHandler/myProfile.js');
 
 function routes(tasking) {
   tasking.app.get('/', function(req, res) {
@@ -11,8 +11,11 @@ function routes(tasking) {
   });
 
   tasking.app.post('/login', function(req, res) {
-    console.log(req.query);
     doLogin(req, res, tasking.db);
+  });
+
+  tasking.app.get('/profile', function(req, res) {
+    myProfile(req, res, tasking.db);
   });
 
   tasking.app.get('/tasks', function(req, res) {
