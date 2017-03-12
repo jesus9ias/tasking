@@ -22,6 +22,26 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: false
         },
+        createdBy: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          references: {
+              model: 'users',
+              key: 'id'
+          },
+          onUpdate: 'cascade',
+          onDelete: 'cascade'
+        },
+        assignedTo: {
+          type: Sequelize.INTEGER,
+          allowNull: true,
+          references: {
+              model: 'users',
+              key: 'id'
+          },
+          onUpdate: 'cascade',
+          onDelete: 'set null'
+        },
         updatedAt: {
           type: Sequelize.DATE,
           allowNull: true
@@ -38,13 +58,19 @@ module.exports = {
           type: Sequelize.INTEGER,
           allowNull: true
         },
-        completedBy: {
-          type: Sequelize.INTEGER,
-          allowNull: true
-        },
         completedAt: {
           type: Sequelize.DATE,
           allowNull: true
+        },
+        completedBy: {
+          type: Sequelize.INTEGER,
+          allowNull: true,
+          references: {
+              model: 'users',
+              key: 'id'
+          },
+          onUpdate: 'cascade',
+          onDelete: 'set null'
         },
         priority: {
           type: Sequelize.INTEGER(1).UNSIGNED,
@@ -55,7 +81,9 @@ module.exports = {
           allowNull: false
         }
       },
-      {}
+      {
+        engine: 'InnoDB'
+      }
     );
   },
 

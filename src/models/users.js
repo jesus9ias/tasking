@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 
-module.exports = function(db) {
-  db.define('users', {
+module.exports = {
+  fields: {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true
@@ -21,5 +21,6 @@ module.exports = function(db) {
     token: {
       type: Sequelize.STRING
     }
-  }, {});
+  },
+  config: {}
 };

@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 
-module.exports = function(db) {
-  db.define('tasks', {
+module.exports = {
+  fields: {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -15,12 +15,6 @@ module.exports = function(db) {
     },
     createdAt: {
       type: Sequelize.DATE
-    },
-    createdBy: {
-      type: Sequelize.INTEGER
-    },
-    assignedTo: {
-      type: Sequelize.INTEGER
     },
     updatedAt: {
       type: Sequelize.DATE
@@ -37,14 +31,12 @@ module.exports = function(db) {
     completedAt: {
       type: Sequelize.DATE
     },
-    completedBy: {
-      type: Sequelize.INTEGER
-    },
     priority: {
       type: Sequelize.INTEGER
     },
     status: {
       type: Sequelize.INTEGER
     }
-  }, {});
+  },
+  config: {}
 };

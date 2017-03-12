@@ -20,6 +20,11 @@ function authRoutes(db) {
             }
           }).then(function(user) {
             if (user) {
+              req.userInfo = {
+                  id: user.id,
+                  name: user.name,
+                  email: user.email
+              };
               next()
             } else {
               res.json(response.NEED_LOGIN({ 'msg': 'not authorized' }));

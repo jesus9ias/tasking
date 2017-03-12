@@ -1,9 +1,10 @@
 var doLogin = require('./routeHandler/doLogin.js');
+var myProfile = require('./routeHandler/myProfile.js');
 var getTasks = require('./routeHandler/getTasks.js');
 var getTask = require('./routeHandler/getTask.js');
 var updateTask = require('./routeHandler/updateTask.js');
 var saveTask = require('./routeHandler/saveTask.js');
-var myProfile = require('./routeHandler/myProfile.js');
+var starTask = require('./routeHandler/starTask.js');
 
 function routes(tasking) {
   tasking.app.get('/', function(req, res) {
@@ -40,6 +41,10 @@ function routes(tasking) {
 
   tasking.app.post('/tasks/:id/delete', function(req, res) {
     manageTask(req, res, tasking.db, 4);
+  });
+
+  tasking.app.post('/tasks/:id/star', function(req, res) {
+    starTask(req, res, tasking.db);
   });
 
 

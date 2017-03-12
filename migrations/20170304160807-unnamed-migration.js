@@ -30,13 +30,17 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: true
         },
+        token:{
+          type: Sequelize.TEXT,
+          allowNull: true
+        },
         status: {
           type: Sequelize.INTEGER(1).UNSIGNED,
           allowNull: false
         }
       },
       {
-        engine: 'MYISAM'
+        engine: 'InnoDB'
       }
     );
   },

@@ -2,6 +2,11 @@ var response = require('../responses');
 
 module.exports = function(req, res, db) {
   db.models.tasks.findOne({
+    include: [
+      { model: db.models.users, as: 'createdByUser', attributes: ['id', 'name'] },
+      { model: db.models.users, as: 'assignedToUser', attributes: ['id', 'name'] },
+      { model: db.models.users, as: 'completedByUser', attributes: ['id', 'name'] }
+    ],
     where: {
       id: req.params.id
     }
