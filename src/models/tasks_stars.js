@@ -9,9 +9,6 @@ module.exports = {
     },
     starredAt: {
       type: Sequelize.DATE
-    },
-    starredBy: {
-      type: Sequelize.INTEGER
     }
   },
   config: {

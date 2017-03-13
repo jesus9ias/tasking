@@ -11,19 +11,26 @@ module.exports = function(db) {
      as: 'createdByUser',
      foreignKey: { name: 'createdBy', allowNull: false }
   });
+
   Tasks.belongsTo(Users, {
      as: 'assignedToUser',
      foreignKey: { name: 'assignedTo', allowNull: true }
   });
+
   Tasks.belongsTo(Users, {
      as: 'completedByUser',
      foreignKey: { name: 'completedBy', allowNull: true }
   });
-  /*TasksStars.belongsTo(Users, {
+
+  TasksStars.belongsTo(Users, {
      as: 'starredByUser',
      foreignKey: { name: 'starredBy', allowNull: true }
-  });*/
-  Tasks.hasOne(TasksStars, {
+  });
+
+  Tasks.belongsToMany(Users, { as: 'usersToTasks', through: TasksStars, foreignKey: 'starredTo', otherKey: 'starredBy', allowNull: true });
+  Users.belongsToMany(Tasks, { as: 'tasksToUsers', through: TasksStars, foreignKey: 'starredBy', otherKey: 'starredTo', allowNull: true });
+
+  Tasks.hasMany(TasksStars, {
      as: 'starredToTask',
      foreignKey: { name: 'starredTo', allowNull: true }
   });
