@@ -5,7 +5,8 @@ module.exports = function(req, res, db) {
     include: [
       { model: db.models.users, as: 'createdByUser', attributes: ['id', 'name'] },
       { model: db.models.users, as: 'assignedToUser', attributes: ['id', 'name'] },
-      { model: db.models.users, as: 'completedByUser', attributes: ['id', 'name'] }
+      { model: db.models.users, as: 'completedByUser', attributes: ['id', 'name'] },
+      { model: db.models.tasks_stars, as: 'starredToTask', attributes: ['id', 'starredBy'] }
     ],
     where: {
       id: req.params.id
