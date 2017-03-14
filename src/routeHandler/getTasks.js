@@ -10,6 +10,7 @@ module.exports = function(req, res, db) {
       {
         model: db.models.tasks_stars,
         as: 'starredToTask',
+        attributes: ['id', 'starredAt'],
         where: {
           starredBy: req.userInfo.id
         },

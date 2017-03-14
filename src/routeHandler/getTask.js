@@ -6,7 +6,15 @@ module.exports = function(req, res, db) {
       { model: db.models.users, as: 'createdByUser', attributes: ['id', 'name'] },
       { model: db.models.users, as: 'assignedToUser', attributes: ['id', 'name'] },
       { model: db.models.users, as: 'completedByUser', attributes: ['id', 'name'] },
-      { model: db.models.tasks_stars, as: 'starredToTask', attributes: ['id', 'starredBy'] }
+      {
+        model: db.models.tasks_stars,
+        as: 'starredToTask',
+        attributes: ['id', 'starredAt'],
+        where: {
+          starredBy: req.userInfo.id
+        },
+        required: false
+      }
     ],
     where: {
       id: req.params.id

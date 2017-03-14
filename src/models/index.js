@@ -30,7 +30,7 @@ module.exports = function(db) {
   Tasks.belongsToMany(Users, { as: 'usersToTasks', through: TasksStars, foreignKey: 'starredTo', otherKey: 'starredBy', allowNull: true });
   Users.belongsToMany(Tasks, { as: 'tasksToUsers', through: TasksStars, foreignKey: 'starredBy', otherKey: 'starredTo', allowNull: true });
 
-  Tasks.hasMany(TasksStars, {
+  Tasks.hasOne(TasksStars, {
      as: 'starredToTask',
      foreignKey: { name: 'starredTo', allowNull: true }
   });
