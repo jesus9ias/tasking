@@ -9,7 +9,10 @@ module.exports = function(req, res, db) {
     if (task) {
       task.update({
         title: req.query.title,
-        description: req.query.description
+        description: req.query.description,
+        isRecurrent: (req.query.isRecurrent === 'true')? 1 : 0,
+        limitDate: req.query.limitDate,
+        priority: req.query.priority,
       });
       res.json(response.OK({ 'task': task }));
     } else {

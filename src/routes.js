@@ -28,27 +28,27 @@ function routes(tasking) {
     getTasks(req, res, tasking.db);
   });
 
+  tasking.app.get('/tasks/:id([0-9]+)?', function(req, res) {
+    getTask(req, res, tasking.db);
+  });
+
+  tasking.app.post('/tasks/:id([0-9]+)?', function(req, res) {
+    updateTask(req, res, tasking.db);
+  });
+
   tasking.app.post('/tasks/save', function(req, res) {
     saveTask(req, res, tasking.db);
   });
 
-  tasking.app.get('/tasks/:id', function(req, res) {
-    getTask(req, res, tasking.db);
-  });
-
-  tasking.app.post('/tasks/:id', function(req, res) {
-    updateTask(req, res, tasking.db);
-  });
-
-  tasking.app.post('/tasks/:id/complete', function(req, res) {
+  tasking.app.post('/tasks/:id([0-9]+)?/complete', function(req, res) {
     manageTask(req, res, tasking.db, 3);
   });
 
-  tasking.app.post('/tasks/:id/delete', function(req, res) {
+  tasking.app.post('/tasks/:id([0-9]+)?/delete', function(req, res) {
     manageTask(req, res, tasking.db, 4);
   });
 
-  tasking.app.post('/tasks/:id/star', function(req, res) {
+  tasking.app.post('/tasks/:id([0-9]+)?/star', function(req, res) {
     starTask(req, res, tasking.db);
   });
 
