@@ -3,7 +3,6 @@ var response = require('../responses');
 module.exports = function(req, res, db) {
   var filters = {};
   var statusFilter = req.query.status || '2';
-  console.log(new Date(req.query.startLimitDate));
   filters.status = {
     $in: statusFilter.split(',')
   };
@@ -32,7 +31,8 @@ module.exports = function(req, res, db) {
         required: false
       }
     ],
-    where: filters
+    where: filters,
+    order: [['limitDate', 'ASC']]
   }).then(function(tasks) {
     res.json(response.OK({ 'tasks': tasks }));
   });
