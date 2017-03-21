@@ -1,6 +1,7 @@
 var jsonfile = require('jsonfile');
 
 var ENV = process.env.NODE_ENV || 'development';
+console.log(ENV);
 
 var config = {
   "development": {

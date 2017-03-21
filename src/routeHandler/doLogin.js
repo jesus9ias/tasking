@@ -12,7 +12,10 @@ module.exports = function(req, res, db) {
     if (user) {
       bcrypt.compare(req.query.password, user.password, function(err, result) {
         if (result === true) {
-          var token = jwt.sign({ id: user.id }, config.SECRET);
+          var token = jwt.sign({
+            id: user.id,
+            exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24),
+          }, config.SECRET);
           user.update({
             token: token
           });

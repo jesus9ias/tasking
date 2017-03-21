@@ -1,15 +1,17 @@
 var doLogin = require('./routeHandler/doLogin.js');
 var logout = require('./routeHandler/logout.js');
 var myProfile = require('./routeHandler/myProfile.js');
+var home = require('./routeHandler/home.js');
 var getTasks = require('./routeHandler/getTasks.js');
 var getTask = require('./routeHandler/getTask.js');
+var manageTask = require('./routeHandler/manageTask.js');
 var updateTask = require('./routeHandler/updateTask.js');
 var saveTask = require('./routeHandler/saveTask.js');
 var starTask = require('./routeHandler/starTask.js');
 
 function routes(tasking) {
   tasking.app.get('/', function(req, res) {
-    res.json({'result': 'home'});
+    home(req, res, tasking.db);
   });
 
   tasking.app.post('/login', function(req, res) {
@@ -46,6 +48,10 @@ function routes(tasking) {
 
   tasking.app.post('/tasks/:id([0-9]+)?/delete', function(req, res) {
     manageTask(req, res, tasking.db, 4);
+  });
+
+  tasking.app.post('/tasks/:id([0-9]+)?/reopen', function(req, res) {
+    manageTask(req, res, tasking.db, 2);
   });
 
   tasking.app.post('/tasks/:id([0-9]+)?/star', function(req, res) {
