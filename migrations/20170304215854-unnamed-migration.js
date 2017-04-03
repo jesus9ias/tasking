@@ -82,7 +82,8 @@ module.exports = {
         }
       },
       {
-        engine: 'InnoDB'
+        engine: 'InnoDB',
+        timestamps: false
       }
     );
   },

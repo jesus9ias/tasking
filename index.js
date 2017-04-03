@@ -6,6 +6,8 @@ var db = require('./src/db.js');
 var auth = require('./src/middlewares/auth');
 var cors = require('./src/middlewares/cors');
 
+process.env.TZ = 'America/Mexico_City';
+
 var app = express();
 var server = http.Server(app);
 

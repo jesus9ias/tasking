@@ -3,7 +3,11 @@ var response = require('../responses');
 module.exports = function(req, res, db, status) {
   db.models.tasks.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
+      $or: {
+        createdBy: req.userInfo.id,
+        assignedTo: req.userInfo.id
+      }
     }
   }).then(function(task) {
     if (task) {

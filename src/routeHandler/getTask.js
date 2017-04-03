@@ -33,7 +33,11 @@ module.exports = function(req, res, db) {
       }
     ],
     where: {
-      id: req.params.id
+      id: req.params.id,
+      $or: {
+        createdBy: req.userInfo.id,
+        assignedTo: req.userInfo.id
+      }
     }
   }).then(function(task) {
     if (task) {

@@ -16,6 +16,11 @@ module.exports = function(req, res, db) {
     filters.limitDate.$lte = req.query.endLimitDate;
   }
 
+  filters.$or = {
+    createdBy: req.userInfo.id,
+    assignedTo: req.userInfo.id
+  }
+
   db.models.tasks.findAll({
     attributes: [
       'id',

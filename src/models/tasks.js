@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+var moment = require('moment-timezone');
 
 module.exports = {
   fields: {
@@ -14,7 +15,7 @@ module.exports = {
       type: Sequelize.TEXT
     },
     createdAt: {
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updatedAt: {
       type: Sequelize.DATE
@@ -38,5 +39,7 @@ module.exports = {
       type: Sequelize.INTEGER
     }
   },
-  config: {}
+  config: {
+    timestamps: false
+  }
 };

@@ -20,7 +20,9 @@ module.exports = {
     },
     token: {
       type: Sequelize.STRING
-    }
+    },
   },
-  config: {}
+  config: {
+    timestamps: false
+  }
 };
