@@ -4,7 +4,6 @@ var config = require('../config');
 
 function authRoutes(db) {
   return function(req, res, next) {
-    console.log(req.path);
     if (req.path.indexOf('/login') > -1 || req.path.indexOf('/logout') > -1) {
       next()
     } else {
