@@ -21,11 +21,11 @@ module.exports = function(req, res, db) {
           });
           res.json(response.OK({ 'token': token }));
         } else {
-          res.json(response.ERROR({ 'msg': 'incorrect login data' }));
+          res.json(response.ERROR({ 'msg': 'Incorrect login data' }));
         }
       });
     } else {
-      res.json(response.NOT_FOUND({ 'msg': 'user not found' }));
+      res.json(response.NOT_FOUND({ 'msg': 'User not found' }));
     }
   });
 }

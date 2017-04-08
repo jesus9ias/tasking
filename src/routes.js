@@ -1,5 +1,6 @@
 var doLogin = require('./routeHandler/doLogin.js');
 var checkSession = require('./routeHandler/checkSession.js');
+var changePassword = require('./routeHandler/changePassword.js');
 var logout = require('./routeHandler/logout.js');
 var myProfile = require('./routeHandler/myProfile.js');
 var home = require('./routeHandler/home.js');
@@ -21,6 +22,10 @@ function routes(tasking) {
 
   tasking.app.post('/checkSession', function(req, res) {
     checkSession(req, res, tasking.db);
+  });
+
+  tasking.app.post('/changePassword', function(req, res) {
+    changePassword(req, res, tasking.db);
   });
 
   tasking.app.post('/logout', function(req, res) {
