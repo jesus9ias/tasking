@@ -3,32 +3,30 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.createTable(
-      'tasks_stars',
+      'tags',
       {
         id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true
         },
-        starredAt: {
+        name: {
+          type: Sequelize.STRING(50),
+          allowNull: false
+        },
+        slug: {
+          type: Sequelize.STRING(50),
+          allowNull: false
+        },
+        createdAt: {
           type: Sequelize.DATE,
           allowNull: false
         },
-        starredBy: {
+        createdBy: {
           type: Sequelize.INTEGER,
-          allowNull: true,
+          allowNull: false,
           references: {
               model: 'users',
-              key: 'id'
-          },
-          onUpdate: 'cascade',
-          onDelete: 'set null'
-        },
-        starredTo: {
-          type: Sequelize.INTEGER,
-          allowNull: true,
-          references: {
-              model: 'tasks',
               key: 'id'
           },
           onUpdate: 'cascade',
@@ -36,12 +34,13 @@ module.exports = {
         }
       },
       {
-        engine: 'InnoDB'
+        engine: 'InnoDB',
+        timestamps: false
       }
     );
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.dropTable('task_stars');
+    return queryInterface.dropTable('tags');
   }
 };

@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "node index.js",
     "prod": "NODE_ENV=production node index.js",
-    "sqlinit": "sequelize init --config src/config/dbConfig.json",
-    "migration": "sequelize migration:create --config src/config/dbConfig.json",
-    "migrate": "sequelize db:migrate --config src/config/dbConfig.json"
+    "db:init": "sequelize init --config src/config/dbConfig.json",
+    "db:migration": "sequelize migration:create --config src/config/dbConfig.json",
+    "db:update": "sequelize db:migrate --config src/config/dbConfig.json"
   },
   "repository": {
     "type": "git",
