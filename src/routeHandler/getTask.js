@@ -30,6 +30,20 @@ module.exports = function(req, res, db) {
           starredBy: req.userInfo.id
         },
         required: false
+      },
+      {
+        model: db.models.tasks_tags,
+        as: 'tagsToTask',
+        attributes: ['id', 'taggedWith'],
+        required: false,
+        include: [
+          {
+            model: db.models.tags,
+            as: 'taggedWithTag',
+            attributes: ['id', 'name', 'slug'],
+            required: false
+          }
+        ]
       }
     ],
     where: {
